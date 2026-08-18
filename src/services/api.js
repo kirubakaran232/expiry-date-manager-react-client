@@ -52,6 +52,18 @@ export const loginUser = (payload) =>
         body: JSON.stringify(payload),
     });
 
+/**
+ * Verify the current session cookie and return the user.
+ * Returns null if the cookie is missing or expired.
+ */
+export const getMe = () => request('/auth/me');
+
+/**
+ * Logout — instructs the server to clear the httpOnly cookie.
+ */
+export const logoutUser = () =>
+    request('/auth/logout', { method: 'POST' });
+
 // ── Products ──────────────────────────────────────────────────────────────────
 
 /**
